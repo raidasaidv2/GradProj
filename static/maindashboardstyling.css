@@ -1,0 +1,209 @@
+/* maindashboardstyling.css */
+
+/* Styles for the body element */
+body {
+    display: flex; /* Use flexbox for layout */
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+    background-color: #cde8e5; /* Background color */
+    font-family: Arial, sans-serif; /* Set the font to Arial, sans-serif */
+}
+
+/* Container for the sidebar and main content */
+.container {
+    display: flex; /* Use flexbox for layout */
+    width: 100%; /* Full width */
+}
+
+/* Styles for the sidebar (navigation) */
+.sidebar {
+    width: 250px; /* Fixed width */
+    background-color: #eef7ff; /* Navigation background */
+    padding: 20px; /* Padding inside the sidebar */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    text-align: center; /* Center text horizontally */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+/* Styles for the logo inside the sidebar */
+.sidebar img {
+    max-width: 200px; /* Max width for the logo */
+    margin-bottom: 80px; /* Increase gap below the logo */
+}
+
+/* Styles for the unordered list inside the sidebar */
+.sidebar ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    width: 100%; /* Make ul take the full width */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange children vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+/* Styles for each list item in the sidebar */
+.sidebar ul li {
+    margin: 30px 0; /* Add gaps between icons */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center items horizontally */
+    width: 100%; /* Make li take the full width */
+}
+
+/* Styles for the first list item in the sidebar */
+.sidebar ul li:first-child {
+    margin-top: 50px; /* Increase gap above the first icon */
+}
+
+/* Styles for the links inside the list items */
+.sidebar ul li a {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    text-decoration: none; /* Remove underline from links */
+    position: relative; /* Relative positioning for tooltips */
+}
+
+/* Styles for the images inside the links */
+.sidebar ul li a img {
+    max-width: 50px; /* Make icons larger */
+}
+
+/* Styles for the main content area */
+.main-content {
+    flex: 1; /* Take up remaining space */
+    padding: 20px; /* Padding inside the main content */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange children vertically */
+    gap: 20px; /* Gap between children */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2em; /* Increase font size */
+}
+
+/* Styles for the rectangles (CCTV time and alerts) */
+/* Styles for the first rectangle (Real-Time CCTV Time) */
+.cctv-time {
+    background-color: #7ab2b2; /* Rectangles background color */
+    padding: 20px; /* Padding inside the rectangle */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2em; /* Increase font size */
+    height: 1200px; /* Increase height of the first rectangle */
+}
+
+/* Styles for the second rectangle (Alerts) */
+.alerts {
+    background-color: #7ab2b2; /* Rectangles background color */
+    padding: 20px; /* Padding inside the rectangle */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2em; /* Increase font size */
+    height: 200px; /* Set the height of the second rectangle */
+    margin-top: auto; /* Push to the bottom of the page */
+}
+
+/* Styles for the rectangles in Activity Reports */
+.daily-log {
+    background-color: #7ab2b2; /* Rectangles background color */
+    padding: 20px; /* Padding inside the rectangle */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2em; /* Increase font size */
+    height: 1000px; /* Set the height of the first rectangle */
+}
+
+.intrusion-logs {
+    background-color: #7ab2b2; /* Rectangles background color */
+    padding: 20px; /* Padding inside the rectangle */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2em; /* Increase font size */
+    height: 100px; /* Set the height of the second rectangle */
+}
+
+/* Styles for the rectangles in Authorized Personnel List */
+.authorized-personnel {
+    background-color: #7ab2b2; /* Rectangles background color */
+    padding: 20px; /* Padding inside the rectangle */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2em; /* Increase font size */
+    height: 1000px; /* Set the height of the first rectangle */
+}
+
+.add-employee {
+    background-color: #7ab2b2; /* Rectangles background color */
+    padding: 20px; /* Padding inside the rectangle */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2em; /* Increase font size */
+    height: auto; /* Adjust height to fit content */
+}
+
+.add-employee form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Smaller gap */
+}
+
+.add-employee form table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.add-employee form table td {
+    padding: 10px;
+    vertical-align: top;
+}
+
+.add-employee .form-left,
+.add-employee .form-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.add-employee label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.add-employee input[type="text"],
+.add-employee input[type="file"] {
+    padding: 8px; /* Smaller padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em; /* Smaller font size */
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.add-employee .form-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Gap between file input and button */
+}
+
+.add-employee button {
+    padding: 8px 16px; /* Smaller padding */
+    background-color: #000000; /* Button background color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em; /* Smaller font size */
+    width: auto; /* Adjust width to fit content */
+}
+
+.add-employee button:hover {
+    background-color: #333333;
+}

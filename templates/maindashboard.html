@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='maindashboardstyling.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" onerror="console.log('Error loading logo.png')">
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}" title="Real-Time CCTV Time" class="active"><img src="{{ url_for('static', filename='images/dashboard_icon.png') }}" alt="Dashboard Icon" onerror="console.log('Error loading dashboard_icon.png')"></a></li>
+                <li><a href="{{ url_for('activity_reports') }}" title="Activity Reports"><img src="{{ url_for('static', filename='images/reports_icon.png') }}" alt="Reports Icon" onerror="console.log('Error loading reports_icon.png')"></a></li>
+                <li><a href="{{ url_for('authorized_personnel') }}" title="Authorized Personnel List"><img src="{{ url_for('static', filename='images/personnel_icon.png') }}" alt="Personnel Icon" onerror="console.log('Error loading personnel_icon.png')"></a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <h2>Real-Time CCTV Time</h2> <!-- Heading above the first rectangle -->
+            <div class="cctv-time">
+                <!-- Big Rectangle for Real-Time CCTV Time -->
+            </div>
+            <div class="alerts" style="height: 100px;">
+                <h2>Alerts</h2>
+                <!-- Narrow Rectangle for Alerts -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

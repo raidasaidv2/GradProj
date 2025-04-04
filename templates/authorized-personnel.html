@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorized Personnel List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='maindashboardstyling.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}" title="Real-Time CCTV Time"><img src="{{ url_for('static', filename='images/dashboard_icon.png') }}" alt="Dashboard Icon"></a></li>
+                <li><a href="{{ url_for('activity_reports') }}" title="Activity Reports"><img src="{{ url_for('static', filename='images/reports_icon.png') }}" alt="Reports Icon"></a></li>
+                <li><a href="{{ url_for('authorized_personnel') }}" title="Authorized Personnel List" class="active"><img src="{{ url_for('static', filename='images/personnel_icon.png') }}" alt="Personnel Icon"></a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <h2>Authorized Personnel List</h2> <!-- Heading above the first rectangle -->
+            <div class="authorized-personnel">
+                <!-- Big Rectangle for Authorized Personnel -->
+            </div>
+            <div class="add-employee">
+                <h2>Add an Employee</h2>
+                <form method="POST" action="{{ url_for('add_employee') }}" enctype="multipart/form-data">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="employee-name">Employee Name:</label>
+                                <input type="text" id="employee-name" name="employee-name" required>
+                            </td>
+                            <td>
+                                <label for="employee-id">Employee ID:</label>
+                                <input type="text" id="employee-id" name="employee-id" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="access-level">Access Level:</label>
+                                <input type="text" id="access-level" name="access-level" required>
+                            </td>
+                            <td>
+                                <label for="gait-enrollment">Gait Enrollment Video:</label>
+                                <input type="file" id="gait-enrollment" name="gait-enrollment" accept="video/*" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit">Add</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
