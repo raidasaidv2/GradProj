@@ -25,6 +25,24 @@
                 <h2>Alerts</h2>
                 <!-- Narrow Rectangle for Alerts -->
             </div>
+            <div class="identify-person">
+                <h2>Identify Person</h2>
+                <!-- Flash messages -->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                    <p class="flash-message">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+                <form method="POST" action="{{ url_for('dashboard') }}" enctype="multipart/form-data">
+                    <label for="gait-video">Upload Gait Video:</label>
+                    <input type="file" id="gait-video" name="gait-video" accept="video/*" required>
+                    <button type="submit">Identify</button>
+                </form>
+            </div>
         </div>
     </div>
 </body>

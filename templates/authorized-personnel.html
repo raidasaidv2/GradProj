@@ -19,10 +19,38 @@
         <div class="main-content">
             <h2>Authorized Personnel List</h2> <!-- Heading above the first rectangle -->
             <div class="authorized-personnel">
-                <!-- Big Rectangle for Authorized Personnel -->
+                <h3>Current Employees</h3>
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Employee ID</th>
+                            <th>Access Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for employee in employees %}
+                        <tr>
+                            <td>{{ employee[1] }}</td> <!-- Name -->
+                            <td>{{ employee[2] }}</td> <!-- Employee ID -->
+                            <td>{{ employee[3] }}</td> <!-- Access Level -->
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
             <div class="add-employee">
                 <h2>Add an Employee</h2>
+                <!-- Flash messages styled and positioned under the form -->
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                    <p class="flash-message">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
                 <form method="POST" action="{{ url_for('add_employee') }}" enctype="multipart/form-data">
                     <table>
                         <tr>

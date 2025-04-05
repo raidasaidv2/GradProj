@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identify Person</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='maindashboardstyling.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}" title="Real-Time CCTV Time"><img src="{{ url_for('static', filename='images/dashboard_icon.png') }}" alt="Dashboard Icon"></a></li>
+                <li><a href="{{ url_for('activity_reports') }}" title="Activity Reports"><img src="{{ url_for('static', filename='images/reports_icon.png') }}" alt="Reports Icon"></a></li>
+                <li><a href="{{ url_for('authorized_personnel') }}" title="Authorized Personnel List"><img src="{{ url_for('static', filename='images/personnel_icon.png') }}" alt="Personnel Icon"></a></li>
+                <li><a href="{{ url_for('identify') }}" title="Identify Person" class="active"><img src="{{ url_for('static', filename='images/identify_icon.png') }}" alt="Identify Icon"></a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <h2>Identify Person</h2>
+            <!-- Flash messages -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                <p class="flash-message">{{ message }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+            <form method="POST" action="{{ url_for('identify') }}" enctype="multipart/form-data">
+                <label for="gait-video">Upload Gait Video:</label>
+                <input type="file" id="gait-video" name="gait-video" accept="video/*" required>
+                <button type="submit">Identify</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
