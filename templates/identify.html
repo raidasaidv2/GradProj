@@ -11,7 +11,7 @@
         <nav class="sidebar">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
             <ul>
-                <li><a href="{{ url_for('dashboard') }}" title="Real-Time CCTV Time"><img src="{{ url_for('static', filename='images/dashboard_icon.png') }}" alt="Dashboard Icon"></a></li>
+                <li><a href="{{ url_for('dashboard') }}" title="CCTV Monitoring Dashboard"><img src="{{ url_for('static', filename='images/dashboard_icon.png') }}" alt="Dashboard Icon"></a></li>
                 <li><a href="{{ url_for('activity_reports') }}" title="Activity Reports"><img src="{{ url_for('static', filename='images/reports_icon.png') }}" alt="Reports Icon"></a></li>
                 <li><a href="{{ url_for('authorized_personnel') }}" title="Authorized Personnel List"><img src="{{ url_for('static', filename='images/personnel_icon.png') }}" alt="Personnel Icon"></a></li>
                 <li><a href="{{ url_for('identify') }}" title="Identify Person" class="active"><img src="{{ url_for('static', filename='images/identify_icon.png') }}" alt="Identify Icon"></a></li>
@@ -22,9 +22,9 @@
             <!-- Flash messages -->
             {% with messages = get_flashed_messages() %}
             {% if messages %}
-            <div class="flash-messages">
+            <div class="{% if 'Intruding alert' in messages[0] %}alert-intruder{% else %}alert-identified{% endif %}">
                 {% for message in messages %}
-                <p class="flash-message">{{ message }}</p>
+                <p>{{ message }}</p>
                 {% endfor %}
             </div>
             {% endif %}

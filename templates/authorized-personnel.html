@@ -17,8 +17,8 @@
             </ul>
         </nav>
         <div class="main-content">
-            <h2>Authorized Personnel List</h2> <!-- Heading above the first rectangle -->
-            <div class="authorized-personnel">
+            <h2>Authorized Personnel</h2>
+            <div class="rectangle">
                 <h3>Current Employees</h3>
                 <table class="employee-table">
                     <thead>
@@ -26,6 +26,7 @@
                             <th>Name</th>
                             <th>Employee ID</th>
                             <th>Access Level</th>
+                            <th>Actions</th> <!-- New column for actions -->
                         </tr>
                     </thead>
                     <tbody>
@@ -34,54 +35,67 @@
                             <td>{{ employee[1] }}</td> <!-- Name -->
                             <td>{{ employee[2] }}</td> <!-- Employee ID -->
                             <td>{{ employee[3] }}</td> <!-- Access Level -->
+                            <td>
+                                <form method="POST" action="{{ url_for('delete_employee', emp_id=employee[2]) }}" style="display: inline;">
+                                    <button type="submit" class="delete-button">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
-            <div class="add-employee">
-                <h2>Add an Employee</h2>
-                <!-- Flash messages styled and positioned under the form -->
+            <div class="rectangle">
+                <h3>Add an Employee</h3>
+                <form method="POST" action="{{ url_for('add_employee') }}" enctype="multipart/form-data" onsubmit="showProcessingMessage()">
+                    <div class="form-row">
+                        <label for="employee-name">Employee Name:</label>
+                        <input type="text" id="employee-name" name="employee-name" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="employee-id">Employee ID:</label>
+                        <input type="text" id="employee-id" name="employee-id" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="access-level">Access Level:</label>
+                        <input type="text" id="access-level" name="access-level" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="gait-enrollment">Gait Enrollment Video:</label>
+                        <input type="file" id="gait-enrollment" name="gait-enrollment" accept="video/*" required>
+                    </div>
+                    <div class="form-row">
+                        <button type="submit">Add</button>
+                    </div>
+                </form>
+                <!-- Processing message -->
+                <div id="processing-message" class="processing-message" style="display: none;">
+                    Processing...
+                </div>
+                <!-- Flash messages styled and positioned below the form -->
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                <div class="flash-messages">
+                <div class="flash-messages" id="flash-messages" style="display: none;">
                     {% for message in messages %}
                     <p class="flash-message">{{ message }}</p>
                     {% endfor %}
                 </div>
                 {% endif %}
                 {% endwith %}
-                <form method="POST" action="{{ url_for('add_employee') }}" enctype="multipart/form-data">
-                    <table>
-                        <tr>
-                            <td>
-                                <label for="employee-name">Employee Name:</label>
-                                <input type="text" id="employee-name" name="employee-name" required>
-                            </td>
-                            <td>
-                                <label for="employee-id">Employee ID:</label>
-                                <input type="text" id="employee-id" name="employee-id" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="access-level">Access Level:</label>
-                                <input type="text" id="access-level" name="access-level" required>
-                            </td>
-                            <td>
-                                <label for="gait-enrollment">Gait Enrollment Video:</label>
-                                <input type="file" id="gait-enrollment" name="gait-enrollment" accept="video/*" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <button type="submit">Add</button>
-                            </td>
-                        </tr>
-                    </table>
-                </form>
             </div>
         </div>
     </div>
+    <script>
+        function showProcessingMessage() {
+            const processingMessage = document.getElementById('processing-message');
+            const flashMessages = document.getElementById('flash-messages');
+            processingMessage.style.display = 'block';
+            flashMessages.style.display = 'none';
+            setTimeout(() => {
+                processingMessage.style.display = 'none';
+                flashMessages.style.display = 'block';
+            }, 55000); // Show "Processing..." for 55 seconds
+        }
+    </script>
 </body>
 </html>

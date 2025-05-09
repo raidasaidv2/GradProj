@@ -3,47 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Dashboard</title>
+    <title>CCTV Dashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='maindashboardstyling.css') }}">
 </head>
 <body>
     <div class="container">
         <nav class="sidebar">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" onerror="console.log('Error loading logo.png')">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
             <ul>
-                <li><a href="{{ url_for('dashboard') }}" title="Real-Time CCTV Time" class="active"><img src="{{ url_for('static', filename='images/dashboard_icon.png') }}" alt="Dashboard Icon" onerror="console.log('Error loading dashboard_icon.png')"></a></li>
-                <li><a href="{{ url_for('activity_reports') }}" title="Activity Reports"><img src="{{ url_for('static', filename='images/reports_icon.png') }}" alt="Reports Icon" onerror="console.log('Error loading reports_icon.png')"></a></li>
-                <li><a href="{{ url_for('authorized_personnel') }}" title="Authorized Personnel List"><img src="{{ url_for('static', filename='images/personnel_icon.png') }}" alt="Personnel Icon" onerror="console.log('Error loading personnel_icon.png')"></a></li>
+                <li><a href="{{ url_for('dashboard') }}" title="CCTV Monitoring Dashboard" class="active"><img src="{{ url_for('static', filename='images/dashboard_icon.png') }}" alt="Dashboard Icon"></a></li>
+                <li><a href="{{ url_for('activity_reports') }}" title="Activity Reports"><img src="{{ url_for('static', filename='images/reports_icon.png') }}" alt="Reports Icon"></a></li>
+                <li><a href="{{ url_for('authorized_personnel') }}" title="Authorized Personnel List"><img src="{{ url_for('static', filename='images/personnel_icon.png') }}" alt="Personnel Icon"></a></li>
             </ul>
         </nav>
         <div class="main-content">
-            <h2>Real-Time CCTV Time</h2> <!-- Heading above the first rectangle -->
-            <div class="cctv-time">
-                <!-- Big Rectangle for Real-Time CCTV Time -->
-            </div>
-            <div class="alerts" style="height: 100px;">
-                <h2>Alerts</h2>
-                <!-- Narrow Rectangle for Alerts -->
-            </div>
-            <div class="identify-person">
-                <h2>Identify Person</h2>
-                <!-- Flash messages -->
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <div class="flash-messages">
-                    {% for message in messages %}
-                    <p class="flash-message">{{ message }}</p>
-                    {% endfor %}
-                </div>
-                {% endif %}
-                {% endwith %}
-                <form method="POST" action="{{ url_for('dashboard') }}" enctype="multipart/form-data">
+            <h2>CCTV Monitoring Dashboard</h2>
+            <div class="rectangle">
+                <h3>Upload Gait Video</h3>
+                <form method="POST" action="{{ url_for('dashboard') }}" enctype="multipart/form-data" onsubmit="showProcessingMessage()">
                     <label for="gait-video">Upload Gait Video:</label>
                     <input type="file" id="gait-video" name="gait-video" accept="video/*" required>
-                    <button type="submit">Identify</button>
+                    <button type="submit">Upload</button>
                 </form>
+                <div id="processing-message" class="processing-message" style="display: none;">
+                    Processing...
+                </div>
+                {% if alert_message %}
+                <div class="{% if 'Intruding alert' in alert_message %}alert-intruder{% else %}alert-identified{% endif %}">
+                    <p>{{ alert_message }}</p>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
+    <script>
+        function showProcessingMessage() {
+            const processingMessage = document.getElementById('processing-message');
+            const alerts = document.querySelector('.alerts');
+            processingMessage.style.display = 'block';
+            if (alerts) alerts.style.display = 'none';
+            setTimeout(() => {
+                processingMessage.style.display = 'none';
+                if (alerts) alerts.style.display = 'block';
+            }, 40000); // Show "Processing..." for 40 seconds
+        }
+    </script>
 </body>
 </html>

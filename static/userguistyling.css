@@ -5,7 +5,7 @@ body {
     display: flex; /* Use flexbox for layout */
     height: 100vh; /* Full viewport height */
     margin: 0; /* Remove default margin */
-    background-color: #cde8e5; /* Background color */
+    background: linear-gradient(135deg, #cde8e5, #a6d6d1); /* Gradient background */
     font-family: Arial, sans-serif; /* Set the font to Arial, sans-serif */
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
