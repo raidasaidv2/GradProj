@@ -1,7 +1,7 @@
-# GradProj: Gait-Based Identification System
+# GaitSecure: Gait-Based Identification System
 
 ## Overview
-GradProj is a gait-based identification system designed to recognize individuals and detect intruders using video analysis. The system leverages machine learning models to analyze gait patterns and classify individuals as either registered personnel or intruders. It provides a user-friendly interface for managing authorized personnel, viewing activity reports, and identifying individuals in real-time.
+GaitSecure is a gait-based identification system designed to recognize individuals and detect intruders using video analysis. The system leverages machine learning models to analyze gait patterns and classify individuals as either registered personnel or intruders. It provides a user-friendly interface for managing authorized personnel, viewing activity reports, and identifying individuals in real-time.
 
 ## Features
 - **User Authentication**: Secure login system for accessing the dashboard.
@@ -61,32 +61,6 @@ GradProj/
 ├── requirements.txt               # Python dependencies
 ```
 
-## Usage
-### Login
-1. Navigate to the login page.
-2. Enter your username and password to access the dashboard.
-
-### Dashboard
-- Upload gait videos to identify individuals or detect intruders.
-- View real-time alerts with color-coded messages:
-  - **Green**: Identified registered personnel.
-  - **Red**: Detected intruder.
-
-### Authorized Personnel
-- Add new personnel by providing their name, employee ID, access level, and gait video.
-- View the list of registered personnel.
-- Delete personnel as needed.
-
-### Activity Reports
-- View logs of registered personnel and intruder activities in separate tables.
-
-### Model Performance Analysis
-- Run `analyze_model_performance.py` to generate:
-  - Confusion matrix.
-  - Classification reports.
-  - ROC curve.
-  - Feature importance visualization.
-
 ## Dependencies
 - Python 3.10+
 - Flask
@@ -101,22 +75,4 @@ Install all dependencies using:
 ```bash
 pip install -r requirements.txt
 ```
-
-## Screenshots
-### Login Page
-![Login Page](static/images/login_screenshot.png)
-
-### Dashboard
-![Dashboard](static/images/dashboard_screenshot.png)
-
-### Activity Reports
-![Activity Reports](static/images/activity_reports_screenshot.png)
-
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Contact
-For questions or feedback, please contact:
-- **Name**: Raida
-- **Email**: raida@example.com
 
